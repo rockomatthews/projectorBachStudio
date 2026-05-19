@@ -1,0 +1,352 @@
+:root {
+  --background: #050505;
+  --foreground: #fff7ec;
+  --muted: #b7aa9a;
+  --blood: #ff143d;
+  --blood-dark: #7f0015;
+  --acid: #d7ff2f;
+  --steel: #141414;
+  --panel: rgba(18, 18, 18, 0.92);
+  --border: rgba(255, 20, 61, 0.8);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  background: var(--background);
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--foreground);
+  background:
+    radial-gradient(circle at 12% 10%, rgba(255, 20, 61, 0.3), transparent 28rem),
+    radial-gradient(circle at 90% 20%, rgba(215, 255, 47, 0.14), transparent 22rem),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04) 25%, transparent 25%) 0 0 / 14px 14px,
+    var(--background);
+  font-family:
+    Impact,
+    Haettenschweiler,
+    "Arial Narrow Bold",
+    system-ui,
+    sans-serif;
+  letter-spacing: 0.01em;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(255, 20, 61, 0.14), transparent 20%, transparent 80%, rgba(255, 20, 61, 0.14)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.035) 1px, transparent 1px, transparent 5px);
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+.site-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 32px 0 56px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
+  gap: 24px;
+  min-height: 58vh;
+  align-items: stretch;
+}
+
+.hero-copy,
+.callout,
+.form-section,
+.audition-form {
+  border: 3px solid var(--border);
+  background: var(--panel);
+  box-shadow:
+    12px 12px 0 var(--blood-dark),
+    0 0 36px rgba(255, 20, 61, 0.28);
+  clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 18px 100%, 0 calc(100% - 18px));
+}
+
+.hero-copy {
+  padding: clamp(24px, 5vw, 56px);
+}
+
+.eyebrow,
+.callout-kicker {
+  margin: 0 0 16px;
+  color: var(--acid);
+  font-size: clamp(0.84rem, 2vw, 1rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.logo-slot {
+  display: grid;
+  min-height: 140px;
+  margin-bottom: 28px;
+  place-items: center;
+  color: var(--acid);
+  border: 2px dashed rgba(215, 255, 47, 0.8);
+  background:
+    linear-gradient(135deg, rgba(255, 20, 61, 0.28), transparent),
+    rgba(0, 0, 0, 0.45);
+  text-transform: uppercase;
+  transform: rotate(-1deg);
+}
+
+.logo-slot span {
+  font-size: clamp(1.5rem, 5vw, 4rem);
+  line-height: 0.9;
+  text-shadow:
+    3px 3px 0 var(--blood),
+    -2px -2px 0 #000;
+}
+
+h1,
+h2 {
+  margin: 0;
+  color: var(--foreground);
+  line-height: 0.86;
+  text-transform: uppercase;
+}
+
+h1 {
+  max-width: 900px;
+  font-size: clamp(3.2rem, 11vw, 8.8rem);
+  letter-spacing: -0.07em;
+  text-shadow:
+    5px 5px 0 var(--blood),
+    10px 10px 0 #000;
+}
+
+h2 {
+  font-size: clamp(2.6rem, 7vw, 5.4rem);
+  letter-spacing: -0.05em;
+  text-shadow: 4px 4px 0 var(--blood);
+}
+
+.bio,
+.section-header p,
+.callout p {
+  max-width: 760px;
+  color: var(--muted);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-size: clamp(1rem, 2vw, 1.28rem);
+  line-height: 1.55;
+}
+
+.bio {
+  margin: 28px 0 0;
+}
+
+.callout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 28px;
+  background:
+    linear-gradient(160deg, rgba(255, 20, 61, 0.2), transparent 58%),
+    var(--panel);
+}
+
+.audio-panel {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.audio-panel audio {
+  width: 100%;
+  filter: saturate(1.6) contrast(1.25);
+}
+
+.noise-button,
+.submit-button {
+  cursor: pointer;
+  border: 0;
+  color: #050505;
+  background: var(--acid);
+  box-shadow: 6px 6px 0 var(--blood);
+  text-transform: uppercase;
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease;
+}
+
+.noise-button {
+  padding: 14px 16px;
+  font-size: 1.2rem;
+}
+
+.noise-button:hover,
+.submit-button:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--blood);
+}
+
+.form-section {
+  margin-top: 32px;
+  padding: clamp(20px, 4vw, 40px);
+}
+
+.section-header {
+  margin-bottom: 24px;
+}
+
+.section-header p:last-child {
+  margin-bottom: 0;
+}
+
+.audition-form {
+  display: grid;
+  gap: 22px;
+  padding: clamp(18px, 4vw, 32px);
+  border-color: rgba(215, 255, 47, 0.8);
+  box-shadow:
+    10px 10px 0 #314000,
+    0 0 36px rgba(215, 255, 47, 0.18);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.field,
+.audition-choice,
+.radio-card {
+  display: grid;
+  gap: 8px;
+}
+
+.field.full,
+.audition-choice {
+  grid-column: 1 / -1;
+}
+
+.field span,
+.choice-label,
+.radio-card span {
+  color: var(--foreground);
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  border: 2px solid rgba(255, 247, 236, 0.45);
+  color: var(--foreground);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 14px;
+  outline: none;
+}
+
+.field textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--acid);
+  box-shadow: 0 0 0 3px rgba(215, 255, 47, 0.2);
+}
+
+.radio-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.radio-card {
+  position: relative;
+  padding: 16px;
+  border: 2px solid rgba(255, 247, 236, 0.35);
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.radio-card input {
+  position: absolute;
+  inset: 14px 14px auto auto;
+  accent-color: var(--blood);
+}
+
+.radio-card small,
+.helper,
+.status {
+  color: var(--muted);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  line-height: 1.45;
+}
+
+.submit-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+.submit-button {
+  min-width: 240px;
+  padding: 16px 22px;
+  font-size: 1.28rem;
+}
+
+.submit-button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.status {
+  margin: 0;
+}
+
+.status.error {
+  color: #ff9cab;
+}
+
+.status.success {
+  color: var(--acid);
+}
+
+@media (max-width: 860px) {
+  .hero,
+  .form-grid,
+  .radio-row {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 17vw, 6rem);
+  }
+}
