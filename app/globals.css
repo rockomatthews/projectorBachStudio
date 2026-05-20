@@ -67,15 +67,10 @@ a {
 }
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(300px, 0.65fr);
-  gap: 24px;
   min-height: 58vh;
-  align-items: stretch;
 }
 
 .hero-copy,
-.callout,
 .form-section,
 .audition-form {
   border: 3px solid var(--border);
@@ -91,7 +86,7 @@ a {
 }
 
 .eyebrow,
-.callout-kicker {
+.choice-label {
   margin: 0 0 16px;
   color: var(--acid);
   font-size: clamp(0.84rem, 2vw, 1rem);
@@ -145,8 +140,7 @@ h2 {
 }
 
 .bio,
-.section-header p,
-.callout p {
+.section-header p {
   max-width: 760px;
   color: var(--muted);
   font-family:
@@ -161,28 +155,6 @@ h2 {
   margin: 28px 0 0;
 }
 
-.callout {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 28px;
-  background:
-    linear-gradient(160deg, rgba(255, 20, 61, 0.2), transparent 58%),
-    var(--panel);
-}
-
-.audio-panel {
-  display: grid;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.audio-panel audio {
-  width: 100%;
-  filter: saturate(1.6) contrast(1.25);
-}
-
-.noise-button,
 .submit-button {
   cursor: pointer;
   border: 0;
@@ -195,15 +167,13 @@ h2 {
     box-shadow 140ms ease;
 }
 
-.noise-button {
-  padding: 14px 16px;
-  font-size: 1.2rem;
-}
-
-.noise-button:hover,
 .submit-button:hover {
   transform: translate(3px, 3px);
   box-shadow: 3px 3px 0 var(--blood);
+}
+
+.hidden-audio {
+  display: none;
 }
 
 .form-section {
@@ -340,7 +310,6 @@ h2 {
 }
 
 @media (max-width: 860px) {
-  .hero,
   .form-grid,
   .radio-row {
     grid-template-columns: 1fr;

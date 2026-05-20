@@ -1,10 +1,9 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 export function AutoAudio() {
   const audioRef = useRef<HTMLAudioElement>(null);
-  const [needsGesture, setNeedsGesture] = useState(false);
 
   useEffect(() => {
     const audio = audioRef.current;
@@ -18,43 +17,24 @@ export function AutoAudio() {
     const attemptPlayback = async () => {
       try {
         await audio.play();
-        setNeedsGesture(false);
       } catch {
-        setNeedsGesture(true);
+        // Browsers may block audible autoplay until the first user gesture.
       }
     };
 
     void attemptPlayback();
   }, []);
 
-  const startPlayback = async () => {
-    const audio = audioRef.current;
-
-    if (!audio) {
-      return;
-    }
-
-    await audio.play();
-    setNeedsGesture(false);
-  };
-
   return (
-    <div className="audio-panel" aria-label="Projector Bach audio player">
-      <audio
-        ref={audioRef}
-        src="/audio/projector-bach.mp3"
-        autoPlay
-        loop
-        controls
-        preload="auto"
-      >
-        Your browser does not support the audio element.
-      </audio>
-      {needsGesture ? (
-        <button className="noise-button" type="button" onClick={startPlayback}>
-          Enter the noise
-        </button>
-      ) : null}
-    </div>
+    <audio
+      ref={audioRef}
+      className="hidden-audio"
+      src="/audio/projector-bach.mp3"
+      autoPlay
+      loop
+      playsInline
+      preload="auto"
+      aria-hidden="true"
+    />
   );
 }
