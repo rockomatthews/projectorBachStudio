@@ -116,6 +116,12 @@ a {
     -2px -2px 0 #000;
 }
 
+.logo-slot img {
+  width: min(100%, 900px);
+  height: auto;
+  filter: drop-shadow(5px 5px 0 var(--blood)) drop-shadow(-2px -2px 0 #000);
+}
+
 h1,
 h2 {
   margin: 0;
@@ -173,7 +179,12 @@ h2 {
 }
 
 .hidden-audio {
-  display: none;
+  position: fixed;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .form-section {

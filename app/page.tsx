@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { AuditionForm } from "@/components/audition-form";
 import { AutoAudio } from "@/components/auto-audio";
 
@@ -9,7 +10,13 @@ export default function Home() {
         <div className="hero-copy">
           <p className="eyebrow">Park City, Utah / masked electric metal</p>
           <div className="logo-slot" aria-label="Projector Bach logo space">
-            <span>Logo goes here</span>
+            <Image
+              src="/logo.png"
+              alt="Projector Bach"
+              width={1941}
+              height={263}
+              priority
+            />
           </div>
           <h1 id="page-title">
             Audition for Park City&apos;s Premiere Electronic Metal Band-

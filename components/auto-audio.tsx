@@ -12,17 +12,39 @@ export function AutoAudio() {
       return;
     }
 
-    audio.volume = 0.7;
+    audio.volume = 1;
+    audio.loop = true;
 
     const attemptPlayback = async () => {
       try {
+        audio.muted = false;
         await audio.play();
+        removeGestureListeners();
+        return true;
       } catch {
-        // Browsers may block audible autoplay until the first user gesture.
+        return false;
       }
     };
 
+    const forcePlayback = () => {
+      void attemptPlayback();
+    };
+
+    const removeGestureListeners = () => {
+      window.removeEventListener("pointerdown", forcePlayback);
+      window.removeEventListener("click", forcePlayback);
+      window.removeEventListener("keydown", forcePlayback);
+      window.removeEventListener("touchstart", forcePlayback);
+    };
+
     void attemptPlayback();
+
+    window.addEventListener("pointerdown", forcePlayback, { passive: true });
+    window.addEventListener("click", forcePlayback, { passive: true });
+    window.addEventListener("keydown", forcePlayback);
+    window.addEventListener("touchstart", forcePlayback, { passive: true });
+
+    return removeGestureListeners;
   }, []);
 
   return (
